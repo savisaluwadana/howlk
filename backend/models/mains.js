@@ -28,6 +28,9 @@ const mainSchema = new mongoose.Schema({
     min: 5,
     trim: true,
     default:"mains"
+  },
+  niche:{
+    //we should allow for niche implementation but for now it's fine
   }
 });
 

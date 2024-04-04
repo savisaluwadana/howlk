@@ -29,7 +29,10 @@ const startersSchema = new mongoose.Schema({
     trim: true,
     default: "mains",
   },
+  niche:{
+    //we should allow for niche implementation but for now it's fine
+  }
 });
 
-const startersModel = mongoose.model("mains", startersSchema);
+const startersModel = mongoose.model("starters", startersSchema);
 module.exports = startersModel;
