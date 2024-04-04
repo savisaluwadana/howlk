@@ -46,7 +46,7 @@ const AddContent = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await Axios.post(`${BASE}/main`, fields);
+      const response = await Axios.post(`${BASE}/mains/adds`, fields);
       if (response.status === 200) {
         alert("Nice!");
         navigator("/");
