@@ -33,3 +33,5 @@ Router.route("/sides").get(async (req,res)=>{
         console.error(err);
     }
 })
+
+module.exports = Router;

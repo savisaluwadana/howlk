@@ -6,7 +6,7 @@ Router.route("/").get(async (req, res) => {
   try {
     //needs to fetch from mains model
 
-    const theData = await mainModel.aggregate({ $match: { category: "main" } });
+    const theData = await startersModel.aggregate({ $match: { category: "main" } });
     if (theData && theData.length) {
       res.status(200).json(theData);
     } else {
@@ -21,7 +21,7 @@ Router.route("/sides").get(async (req, res) => {
   try {
     //needs to fetch from mains model
 
-    const theData = await mainModel.aggregate({
+    const theData = await startersModel.aggregate({
       $match: { category: "sides" },
     });
     if (theData && theData.length) {
@@ -34,7 +34,7 @@ Router.route("/sides").get(async (req, res) => {
   }
 });
 
-Router.route("/adds").get(async (req, res) => {
+Router.route("/adds").post(async (req, res) => {
   const { heading, preDesc, content, postDesc, category } = req?.body;
 
   if (!heading || !preDesc || !content || !postDesc || !category) {
@@ -60,3 +60,5 @@ Router.route("/adds").get(async (req, res) => {
     }
   }
 });
+
+module.exports = Router;
