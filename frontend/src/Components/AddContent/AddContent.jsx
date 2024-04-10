@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
@@ -123,7 +124,7 @@ const AddContent = () => {
             </button>
           </form>
         )}
-        <h1>{status}</h1>
+        {/* <h1>{status}</h1> */}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const { loading, setLoading, BASE, status, setStatus } =
@@ -53,24 +54,34 @@ const Main = () => {
 
   return (
     <div>
-      <h1>Main</h1>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div>
-          <div className="featured">
-            <h1>Featured</h1>
-            {data && data.length ? JSON.stringify(data) : "No results found!"}
+      <h1 style={{ textAlign: "center" }}>Welcome to How.LK</h1>
+      <div
+        style={{
+          marginTop: "120px",
+          marginLeft: "40px",
+          padding:"20px"
+        }}
+      >
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div>
+            <div className="featured">
+              <h1>Featured</h1>
+              {data && data.length ? JSON.stringify(data) : "No results found!"}
+            </div>
+            <div className="sides">
+              <h1>Side Hustles</h1>
+              {data2 && data2.length
+                ? JSON.stringify(data2)
+                : "No results found!"}
+            </div>
           </div>
-          <div className="sides">
-            <h1>Side Hustles</h1>
-            {data2 && data2.length
-              ? JSON.stringify(data2)
-              : "No results found!"}
-          </div>
-        </div>
-      )}
-      <p>{status}</p>
+        )}
+        {/* <p>{status}</p> */}
+        <Link to={"/addContent"}>Add Resources</Link>
+      </div>
+      
     </div>
   );
 };
