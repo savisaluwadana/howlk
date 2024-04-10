@@ -43,7 +43,7 @@ const Starters = () => {
             <h1>Featured</h1>
             {data && data.length
               ? data.map((x) => (
-                  <div key={x._id} className="">
+                  <div key={x._id} className="" style={{marginTop:"120px",marginLeft:"40px"}}>
                     <h1>{x.heading}</h1>
                     <h2>{x.category}</h2>
                     <p>{x.preDesc}</p>
@@ -59,7 +59,7 @@ const Starters = () => {
                 ))
               : "No results found!"}
           </div>
-          <p>{JSON.stringify(data)}</p>
+          {/* <p>{JSON.stringify(data)}</p> */}
         </div>
       )}
       <p>{status}</p>
