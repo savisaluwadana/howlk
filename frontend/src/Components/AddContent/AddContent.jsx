@@ -54,7 +54,7 @@ const AddContent = () => {
     } catch (err) {
       if (err.status === 404) {
         setStatus("No results found!");
-      } else {
+      }else if(err.status===500){setStatus("Some issue!")} else {
         setStatus("Error!");
       }
     } finally {
