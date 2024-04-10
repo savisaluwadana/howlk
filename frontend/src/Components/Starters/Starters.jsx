@@ -42,21 +42,21 @@ const Starters = () => {
           <div className="featured">
             <h1>Featured</h1>
             {data && data.length
-              ? data.map((x) => {
+              ? data.map((x) => (
                   <div key={x._id} className="">
                     <h1>{x.heading}</h1>
                     <h2>{x.category}</h2>
                     <p>{x.preDesc}</p>
                     <div className="content">
-                      {x.content.map((iter, index) => {
+                      {x.content.map((iter, index) => (
                         <div key={index}>
                           <p>{iter}</p>
-                        </div>;
-                      })}
+                        </div>
+                      ))}
                     </div>
                     <p>{x.postDesc}</p>
-                  </div>;
-                })
+                  </div>
+                ))
               : "No results found!"}
           </div>
           <p>{JSON.stringify(data)}</p>
