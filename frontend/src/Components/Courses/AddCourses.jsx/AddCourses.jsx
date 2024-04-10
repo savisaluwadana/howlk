@@ -18,7 +18,7 @@ const AddCourses = () => {
   async function AddCourses(e) {
     e.preventDefault();
     try {
-      const response = await Axios.post(`${BASE}/courses`, courseRelated);
+      const response = await Axios.post(`${BASE}/courses/add`, courseRelated);
       if (response.status === 200) {
         setStatus("Added Resource!");
         setTimeout(() => {
@@ -45,11 +45,11 @@ const AddCourses = () => {
     <div>
       <h1>Add Courses</h1>
       <form onSubmit={AddCourses}>
-        <input onChange={handleChange} name="title" placeholder="text"></input>
+        <input onChange={handleChange} name="title" placeholder="Enter title"></input>
         <input
           onChange={handleChange}
           name="courses"
-          placeholder="text"
+          placeholder="Enter course name"
         ></input>
         {/* <input
           onChange={handleChange}

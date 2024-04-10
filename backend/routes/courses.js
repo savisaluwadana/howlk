@@ -23,7 +23,7 @@ Router.route("/add").post(async (req, res) => {
   //cloudinary logic for video saving
   //403 bad request
   try {
-    const conflict = await coursesModel.aggregate({ $match: title });
+    const conflict = await coursesModel.find(title);
     if (!conflict) {
       const resourceAdd = await coursesModel.create({
         title,

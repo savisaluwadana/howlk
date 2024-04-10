@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import Axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 
@@ -22,6 +23,10 @@ const Courses = () => {
       console.error(err);
     }
   }
+
+  useEffect(()=>{
+    FetchCourses();
+  },[])
 
   return (
     <div>
