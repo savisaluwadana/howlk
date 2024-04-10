@@ -15,6 +15,7 @@ const Starters = () => {
       const response = await Axios.get(`${BASE}/starters`);
       if (response.status === 200) {
         setData(response.data);
+        console.log(response.data);
       }
     } catch (err) {
       if (err.status === 404) {
@@ -40,8 +41,25 @@ const Starters = () => {
         <div>
           <div className="featured">
             <h1>Featured</h1>
-            {data && data.length ? JSON.stringify(data) : "No results found!"}
+            {data && data.length
+              ? data.map((x) => {
+                  <div key={x._id} className="">
+                    <h1>{x.heading}</h1>
+                    <h2>{x.category}</h2>
+                    <p>{x.preDesc}</p>
+                    <div className="content">
+                      {x.content.map((iter, index) => {
+                        <div key={index}>
+                          <p>{iter}</p>
+                        </div>;
+                      })}
+                    </div>
+                    <p>{x.postDesc}</p>
+                  </div>;
+                })
+              : "No results found!"}
           </div>
+          <p>{JSON.stringify(data)}</p>
         </div>
       )}
       <p>{status}</p>

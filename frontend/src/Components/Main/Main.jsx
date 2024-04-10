@@ -63,7 +63,7 @@ const Main = () => {
             {data && data.length ? JSON.stringify(data) : "No results found!"}
           </div>
           <div className="sides">
-            <h1>Side</h1>
+            <h1>Side Hustles</h1>
             {data2 && data2.length
               ? JSON.stringify(data2)
               : "No results found!"}
