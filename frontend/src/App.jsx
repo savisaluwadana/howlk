@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./Components/Main/Main";
 import Starters from "./Components/Starters/Starters";
+import DetailsPage from "./Components/Details/DetailsPage";
 
 import { createContext, useState } from "react";
 import AddContent from "./Components/AddContent/AddContent";
@@ -14,7 +15,7 @@ function App() {
   const [status, setStatus] = useState("");
   const [user, setUser] = useState({});
 
-  const BASE = "http://localhost:8000"
+  const BASE = "http://localhost:8000";
 
   const theStates = {
     loading,
@@ -23,7 +24,7 @@ function App() {
     setStatus,
     user,
     setUser,
-    BASE
+    BASE,
   };
 
   return (
@@ -33,10 +34,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
-            <Route path="/addContent" element={<AddContent/>}></Route>
-            <Route path="/courses" element={<Courses/>}></Route>
-            <Route path="/addcourses" element={<AddCourses/>}></Route>
-            <Route path="*" element={<Unknown/>}></Route>
+            <Route path="/details/:id" component={DetailsPage} />
+            <Route path="/addContent" element={<AddContent />}></Route>
+            <Route path="/courses" element={<Courses />}></Route>
+            <Route path="/addcourses" element={<AddCourses />}></Route>
+            <Route path="*" element={<Unknown />}></Route>
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
