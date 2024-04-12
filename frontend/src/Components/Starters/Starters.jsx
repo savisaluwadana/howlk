@@ -1,26 +1,23 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import "./Starters.css";
+import "./Starters.css"; // Import CSS file for component-specific styles
 
 const Starters = () => {
   const { loading, setLoading, BASE, status, setStatus } =
     useContext(UserContext);
   const [data, setData] = useState([]);
 
-  async function fetch() {
+  async function fetchData() {
     try {
       setLoading(true);
       const response = await Axios.get(`${BASE}/starters`);
       if (response.status === 200) {
         setData(response.data);
-        console.log(response.data);
       }
     } catch (err) {
-      if (err.status === 404) {
+      if (err.response && err.response.status === 404) {
         setStatus("No results found!");
       } else {
         setStatus("Error!");
@@ -31,46 +28,44 @@ const Starters = () => {
   }
 
   useEffect(() => {
-    fetch();
+    fetchData();
   }, []);
 
   return (
-    <div style={{ margin: "40px" }}>
-      <h1>Starters</h1>
-      <Link to={"/addContent"}>Add Resources</Link>
+    <div className="starters-container">
+      <h1 className="starters-heading">Starters</h1>
+      <Link to={"/addContent"} className="add-resources-link">
+        Add Resources
+      </Link>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <div>
           <div className="featured">
-            <h1>Featured</h1>
-            {data && data.length
-              ? data.map((x) => (
-                  <div
-                    key={x._id}
-                    className=""
-                    style={{
-                      marginTop: "120px",
-                      marginLeft: "40px",
-                      marginBottom: "40px",
-                    }}
-                  >
-                    <h1>{x.heading}</h1>
-                    <h2>{x.category}</h2>
-                    <p>{x.preDesc}</p>
+            <h2>Featured</h2>
+            <div className="card-container">
+              {data && data.length ? (
+                data.map((item) => (
+                  <div key={item._id} className="card">
+                    <h3>{item.heading}</h3>
+                    <h4>{item.category}</h4>
+                    <p>{item.preDesc}</p>
                     <div className="content">
-                      {x.content.map((iter, index) => (
+                      {item.content.map((iter, index) => (
                         <div key={index}>
                           <p>{iter}</p>
                         </div>
                       ))}
                     </div>
-                    <p>{x.postDesc}</p>
+                    <p>{item.postDesc}</p>
+                    <Link to={`/details/${item._id}`}>Read More</Link>
                   </div>
                 ))
-              : "No results found!"}
+              ) : (
+                <p>No results found!</p>
+              )}
+            </div>
           </div>
-          {/* <p>{JSON.stringify(data)}</p> */}
         </div>
       )}
       <p>{status}</p>
