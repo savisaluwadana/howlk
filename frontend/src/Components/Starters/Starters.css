@@ -1,0 +1,31 @@
+.starters-container {
+  margin: 40px;
+}
+
+.add-content-link {
+  display: block;
+  margin-bottom: 20px;
+  color: blue; /* Example color */
+}
+
+.starters-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.featured {
+  flex: 1;
+}
+
+.starter-item {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.status {
+  font-style: italic;
+  color: red; /* Example color */
+}
